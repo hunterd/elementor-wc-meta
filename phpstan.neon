@@ -1,0 +1,16 @@
+parameters:
+    level: 5
+    paths:
+        - app
+    excludePaths:
+        - vendor
+    ignoreErrors:
+        # Ignore WordPress function calls as they're not available in static analysis
+        - '#Call to unknown function: (add_action|add_filter|wp_enqueue_script|wp_enqueue_style|esc_html|esc_url|get_option|is_admin)#'
+        - '#Call to unknown function: (wc_get_product|wc_price|is_woocommerce|is_product|get_the_terms)#'
+        - '#Use of unknown class: \'(WC_Product|Elementor\\\\.*?)\'#'
+        - '#Undefined type \'(WC_Product|Elementor\\\\.*?)\'#'
+    bootstrapFiles:
+        - stubs/wordpress.stub
+        - stubs/woocommerce.stub
+        - stubs/elementor.stub

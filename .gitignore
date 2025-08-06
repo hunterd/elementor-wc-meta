@@ -1,0 +1,44 @@
+# Ignore dependencies
+/vendor/
+/node_modules/
+
+# Ignore build artifacts
+/public/dist/
+/public/hot
+
+# Ignore logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
+
+# Ignore IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Ignore environment files
+.env
+.env.local
+.env.production
+
+# Ignore temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Ignore backup files
+*.bak
+*.backup
+
+# Ignore composer.lock (optional for plugins)
+# composer.lock
+
+# Ignore package-lock.json (optional)
+# package-lock.json

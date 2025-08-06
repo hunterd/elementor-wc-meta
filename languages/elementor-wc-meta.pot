@@ -1,0 +1,140 @@
+# Elementor WC Meta - Translation Template
+# Copyright (C) 2024 Elementor WC Meta
+# This file is distributed under the same license as the Elementor WC Meta package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Elementor WC Meta 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/hunterd/elementor-wc-meta\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-08-06T12:00:00+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WordPress\n"
+"X-Domain: elementor-wc-meta\n"
+
+#: app/Elementor/Widgets/WcMetaWidget.php:34
+msgid "WC Meta Field"
+msgstr ""
+
+#: app/Elementor/Widgets/WcMetaWidget.php:65
+msgid "Content"
+msgstr ""
+
+#: app/Elementor/Widgets/WcMetaWidget.php:72
+msgid "Meta Field"
+msgstr ""
+
+#: app/Elementor/Widgets/WcMetaWidget.php:80
+msgid "Show Label"
+msgstr ""
+
+#: app/Elementor/Widgets/WcMetaWidget.php:82 
+#: app/Elementor/Widgets/WcMetaWidget.php:83
+msgid "Show"
+msgstr ""
+
+#: app/Elementor/Widgets/WcMetaWidget.php:83
+msgid "Hide"
+msgstr ""
+
+#: app/Elementor/Widgets/WcMetaWidget.php:91
+msgid "Custom Label"
+msgstr ""
+
+#: app/Elementor/Widgets/WcMetaWidget.php:93
+msgid "Enter custom label"
+msgstr ""
+
+#: app/Elementor/Widgets/WcMetaWidget.php:102
+msgid "Limit Items"
+msgstr ""
+
+#: app/Elementor/Widgets/WcMetaWidget.php:108
+msgid "Set to 0 for no limit"
+msgstr ""
+
+#: app/Elementor/Widgets/WcMetaWidget.php:117
+msgid "Separator"
+msgstr ""
+
+#: app/Elementor/Widgets/WcMetaWidget.php:127
+msgid "HTML Tag"
+msgstr ""
+
+#: app/Elementor/Widgets/WcMetaWidget.php:148
+msgid "Style"
+msgstr ""
+
+#: app/Elementor/Widgets/WcMetaWidget.php:161
+msgid "Text Color"
+msgstr ""
+
+#: app/Elementor/Widgets/WcMetaWidget.php:171
+msgid "Label Color"
+msgstr ""
+
+#: app/Elementor/Widgets/WcMetaWidget.php:182
+msgid "Alignment"
+msgstr ""
+
+#: app/Elementor/Widgets/WcMetaWidget.php:186
+msgid "Left"
+msgstr ""
+
+#: app/Elementor/Widgets/WcMetaWidget.php:190
+msgid "Center"
+msgstr ""
+
+#: app/Elementor/Widgets/WcMetaWidget.php:194
+msgid "Right"
+msgstr ""
+
+#: app/WooCommerce/MetaFieldsManager.php:22
+msgid "Product Categories"
+msgstr ""
+
+#: app/WooCommerce/MetaFieldsManager.php:29
+msgid "Product Tags"
+msgstr ""
+
+#: app/WooCommerce/MetaFieldsManager.php:36
+msgid "Product Attributes"
+msgstr ""
+
+#: app/WooCommerce/MetaFieldsManager.php:43
+msgid "Product Price"
+msgstr ""
+
+#: app/WooCommerce/MetaFieldsManager.php:50
+msgid "Product Regular Price"
+msgstr ""
+
+#: app/WooCommerce/MetaFieldsManager.php:57
+msgid "Product Sale Price"
+msgstr ""
+
+#: app/WooCommerce/MetaFieldsManager.php:64
+msgid "Product SKU"
+msgstr ""
+
+#: app/WooCommerce/MetaFieldsManager.php:71
+msgid "Stock Status"
+msgstr ""
+
+#: app/WooCommerce/MetaFieldsManager.php:78
+msgid "Product Weight"
+msgstr ""
+
+#: app/WooCommerce/MetaFieldsManager.php:85
+msgid "Product Dimensions"
+msgstr ""
+
+#: app/WooCommerce/MetaFieldsManager.php:238
+msgid "In Stock"
+msgstr ""
+
+#: app/WooCommerce/MetaFieldsManager.php:238
+msgid "Out of Stock"
+msgstr ""

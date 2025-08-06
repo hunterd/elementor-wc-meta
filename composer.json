@@ -1,0 +1,43 @@
+{
+    "name": "hunterd/elementor-wc-meta",
+    "description": "WordPress plugin for adding WooCommerce meta fields to Elementor widgets",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "David Mussard",
+            "email": "david.mussard@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.10",
+        "squizlabs/php_codesniffer": "^3.7",
+        "wp-coding-standards/wpcs": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ElementorWcMeta\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ElementorWcMeta\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "composer dump-autoload"
+        ],
+        "post-update-cmd": [
+            "composer dump-autoload"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

@@ -1,0 +1,115 @@
+/* Admin styles for Elementor WC Meta plugin */
+
+.elementor-wc-meta-admin {
+    .notice {
+        margin: 20px 0;
+        padding: 15px;
+        border-left: 4px solid #0073aa;
+        background: #fff;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+        
+        &.notice-error {
+            border-left-color: #dc3232;
+        }
+        
+        &.notice-success {
+            border-left-color: #46b450;
+        }
+        
+        &.notice-warning {
+            border-left-color: #ffb900;
+        }
+    }
+}
+
+/* Elementor editor styles */
+.elementor-panel .elementor-control-type-select {
+    .elementor-control-input-wrapper select {
+        &[data-setting="meta_field"] {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+        }
+    }
+}
+
+/* Frontend widget styles */
+.elementor-widget-wc-meta {
+    .elementor-wc-meta {
+        display: block;
+        
+        .elementor-wc-meta-label {
+            font-weight: 600;
+            margin-right: 5px;
+        }
+        
+        .elementor-wc-meta-value {
+            display: inline;
+        }
+        
+        // Product categories styling
+        &.meta-product_categories,
+        &.meta-product_tags {
+            .elementor-wc-meta-value {
+                a {
+                    text-decoration: none;
+                    color: inherit;
+                    
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+        
+        // Price styling
+        &.meta-product_price,
+        &.meta-product_regular_price,
+        &.meta-product_sale_price {
+            .elementor-wc-meta-value {
+                font-weight: 700;
+                
+                .amount {
+                    font-weight: inherit;
+                }
+            }
+        }
+        
+        // SKU styling
+        &.meta-product_sku {
+            .elementor-wc-meta-value {
+                font-family: monospace;
+                font-size: 0.9em;
+                background: #f8f9fa;
+                padding: 2px 6px;
+                border-radius: 3px;
+            }
+        }
+        
+        // Stock status styling
+        &.meta-product_stock_status {
+            .elementor-wc-meta-value {
+                &.in-stock {
+                    color: #46b450;
+                }
+                
+                &.out-of-stock {
+                    color: #dc3232;
+                }
+            }
+        }
+    }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .elementor-widget-wc-meta {
+        .elementor-wc-meta {
+            font-size: 0.9em;
+            
+            .elementor-wc-meta-label {
+                display: block;
+                margin-bottom: 2px;
+                margin-right: 0;
+            }
+        }
+    }
+}
