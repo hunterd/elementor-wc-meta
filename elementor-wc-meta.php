@@ -15,6 +15,7 @@
  * Requires PHP: 8.0
  * WC requires at least: 8.0
  * WC tested up to: 9.0
+ * Requires Plugins: woocommerce, elementor
  * Elementor tested up to: 3.23
  * Elementor Pro tested up to: 3.23
  */
@@ -33,6 +34,21 @@ define('ELEMENTOR_WC_META_PLUGIN_BASENAME', plugin_basename(__FILE__));
 if (file_exists(ELEMENTOR_WC_META_PLUGIN_DIR . 'vendor/autoload.php')) {
     require_once ELEMENTOR_WC_META_PLUGIN_DIR . 'vendor/autoload.php';
 }
+
+/**
+ * Early HPOS compatibility declaration
+ * Must be called before WooCommerce initializes
+ */
+function elementor_wc_meta_declare_hpos_compatibility() {
+    if (class_exists('\Automattic\WooCommerce\Utilities\FeaturesUtil')) {
+        \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('custom_order_tables', __FILE__, true);
+        \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('cart_checkout_blocks', __FILE__, true);
+        \Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility('product_block_editor', __FILE__, true);
+    }
+}
+
+// Declare HPOS compatibility as early as possible
+add_action('before_woocommerce_init', 'elementor_wc_meta_declare_hpos_compatibility');
 
 // Initialize the plugin
 add_action('plugins_loaded', function() {

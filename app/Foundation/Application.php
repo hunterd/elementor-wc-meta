@@ -6,6 +6,7 @@ use ElementorWcMeta\Providers\ServiceProvider;
 use ElementorWcMeta\Providers\ElementorServiceProvider;
 use ElementorWcMeta\Providers\WooCommerceServiceProvider;
 use ElementorWcMeta\Providers\AssetServiceProvider;
+use ElementorWcMeta\Providers\HposCompatibilityServiceProvider;
 
 /**
  * Main Application class - similar to Laravel's Application
@@ -20,6 +21,7 @@ class Application
      * Service providers to register
      */
     private array $serviceProviders = [
+        HposCompatibilityServiceProvider::class,
         ElementorServiceProvider::class,
         WooCommerceServiceProvider::class,
         AssetServiceProvider::class,

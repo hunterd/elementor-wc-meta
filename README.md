@@ -2,14 +2,15 @@
 
 A professional WordPress plugin that adds WooCommerce product meta fields to Elementor widgets with granular control.
 
-## Features
+## 🚀 Fonctionnalités
 
-- **Granular Meta Field Control**: Select specific WooCommerce meta fields (categories, tags, attributes, price, SKU, etc.)
-- **Flexible Display Options**: Show/hide labels, limit quantity of displayed items, custom separators
-- **Loop Integration**: Works seamlessly with Elementor loop queries
-- **Professional Architecture**: Laravel-inspired structure with Composer autoloading and Vite.js asset building
-- **Responsive Design**: Mobile-friendly output with customizable styling
-- **Developer Friendly**: Extensible architecture with hooks and filters
+- ✅ **Widget Elementor personnalisé** pour l'affichage granulaire des méta données WooCommerce
+- ✅ **Support de 10+ types de données** : catégories, tags, prix, SKU, stock, dimensions, etc.
+- ✅ **Contrôles granulaires** : Choix du produit, du champ, et du style d'affichage
+- ✅ **Architecture Laravel-inspired** avec Service Providers et conteneur IoC
+- ✅ **Build moderne** avec Vite.js et Composer
+- ✅ **Production ready** avec minification et optimisations
+- ✅ **Compatible HPOS** : Support complet du stockage haute performance WooCommerce
 
 ## Supported Meta Fields
 
