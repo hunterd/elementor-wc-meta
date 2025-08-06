@@ -7,8 +7,9 @@ export default defineConfig({
             targets: ['defaults', 'not IE 11']
         })
     ],
+    publicDir: false, // Disable public directory copying to avoid conflicts
     build: {
-        outDir: 'public/dist',
+        outDir: 'dist',
         manifest: true,
         rollupOptions: {
             input: {

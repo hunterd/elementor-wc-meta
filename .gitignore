@@ -3,6 +3,7 @@
 /node_modules/
 
 # Ignore build artifacts
+/dist/
 /public/dist/
 /public/hot
 

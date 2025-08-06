@@ -66,41 +66,14 @@ Le plugin **Elementor WooCommerce Meta** est maintenant complètement développ�
 - **Vite.js** pour les assets modernes
 - **Hooks & Filters** pour l'extensibilité
 
-## 📦 Méthodes de Déploiement
+## 📦 Structure des Assets
 
-### Option 1 : Script Automatique (Recommandé)
-```bash
-# Créer un package de production automatiquement
-./build-production.sh
-```
-
-### Option 2 : Déploiement Manuel
-
-1. **Préparer les assets**:
-```bash
-npm run build
-composer install --no-dev --optimize-autoloader
-```
-
-2. **Copier les fichiers nécessaires** (exclure) :
-   - `node_modules/`
-   - `resources/` (sources non compilées)
-   - `.git/`
-   - `*.md` (documentation)
-   - `package*.json`
-   - `vite.config.js`
-   - `phpstan.neon`
-
-3. **Fichiers requis en production** :
-   - `elementor-wc-meta.php` (fichier principal)
-   - `app/` (code source)
-   - `vendor/` (dépendances PHP)
-   - `public/dist/` (assets compilés)
-   - `languages/` (traductions)
-
-### Option 3 : Upload Direct
-- Copier tout le dossier vers `/wp-content/plugins/`
-- Activer le plugin dans WordPress Admin
+### 🔧 Build System Vite.js
+- **Configuration** : `vite.config.js` optimisée pour éviter les conflits
+- **Assets compilés** : Stockés dans `/dist/` (plus de conflit publicDir)
+- **Manifest** : Génération automatique pour le cache-busting
+- **Legacy support** : Compatible navigateurs anciens
+- **Minification** : CSS et JS optimisés pour la production
 
 ## 🎯 Installation sur WordPress
 

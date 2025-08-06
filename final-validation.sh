@@ -46,6 +46,7 @@ echo -e "${BLUE}🔌 SERVICE PROVIDERS${NC}"
 echo "===================="
 
 # Service Providers
+check_requirement "I18n Provider" "test -f app/Providers/I18nServiceProvider.php"
 check_requirement "Asset Provider" "test -f app/Providers/AssetServiceProvider.php"
 check_requirement "Elementor Provider" "test -f app/Providers/ElementorServiceProvider.php"
 check_requirement "WooCommerce Provider" "test -f app/Providers/WooCommerceServiceProvider.php"
@@ -64,8 +65,8 @@ echo "================"
 
 # Build files
 check_requirement "Node modules" "test -d node_modules"
-check_requirement "Dist directory" "test -d public/dist"
-check_requirement "Vite manifest" "test -f public/dist/.vite/manifest.json"
+check_requirement "Dist directory" "test -d dist"
+check_requirement "Vite manifest" "test -f dist/.vite/manifest.json"
 
 echo ""
 echo -e "${BLUE}🛡️ HPOS COMPATIBILITY${NC}"

@@ -3,6 +3,7 @@
 namespace ElementorWcMeta\Foundation;
 
 use ElementorWcMeta\Providers\ServiceProvider;
+use ElementorWcMeta\Providers\I18nServiceProvider;
 use ElementorWcMeta\Providers\ElementorServiceProvider;
 use ElementorWcMeta\Providers\WooCommerceServiceProvider;
 use ElementorWcMeta\Providers\AssetServiceProvider;
@@ -21,6 +22,7 @@ class Application
      * Service providers to register
      */
     private array $serviceProviders = [
+        I18nServiceProvider::class,
         HposCompatibilityServiceProvider::class,
         ElementorServiceProvider::class,
         WooCommerceServiceProvider::class,
@@ -157,5 +159,13 @@ class Application
     public function url(string $path = ''): string
     {
         return ELEMENTOR_WC_META_PLUGIN_URL . ltrim($path, '/');
+    }
+
+    /**
+     * Get plugin file path
+     */
+    public function getPluginFile(): string
+    {
+        return ELEMENTOR_WC_META_PLUGIN_FILE;
     }
 }

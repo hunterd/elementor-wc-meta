@@ -11,15 +11,22 @@ class MetaFieldsManager
 
     public function __construct()
     {
-        $this->initializeMetaFields();
-        add_action('init', [$this, 'registerMetaFields']);
+        // Defer meta fields initialization until init hook when translations are available
+        add_action('init', [$this, 'initializeMetaFields'], 5);
+        add_action('init', [$this, 'registerMetaFields'], 10);
     }
 
     /**
      * Initialize available meta fields
+     * Called at init hook when translations are available
      */
-    private function initializeMetaFields(): void
+    public function initializeMetaFields(): void
     {
+        // Prevent double initialization
+        if (!empty($this->metaFields)) {
+            return;
+        }
+
         $this->metaFields = [
             'product_categories' => [
                 'label' => __('Product Categories', 'elementor-wc-meta'),

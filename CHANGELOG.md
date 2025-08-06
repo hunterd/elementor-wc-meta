@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.0.1] - 2024-01-XX - Translation Fix 🌐
+
+### 🐛 Corrections
+- **Translation Loading** : Correction de l'erreur "textdomain loaded too early"
+- **I18nServiceProvider** : Nouveau service provider pour gérer les traductions
+- **Hook Timing** : Chargement du textdomain au hook 'init' au lieu de 'plugins_loaded'
+- **MetaFieldsManager** : Initialisation différée des champs avec traductions
+
+### 🔧 Technique
+- Ajout de `I18nServiceProvider` pour le chargement des traductions
+- Modification de `MetaFieldsManager::initializeMetaFields()` vers hook 'init'
+- Ordre des service providers optimisé (I18n en premier)
+
 ## [1.0.0] - 2024-01-XX - Production Release 🚀
 
 ### ✨ Nouveautés

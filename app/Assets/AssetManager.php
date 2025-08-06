@@ -23,7 +23,7 @@ class AssetManager
      */
     private function loadManifest(): void
     {
-        $manifestPath = $this->app->path('public/dist/.vite/manifest.json');
+        $manifestPath = $this->app->path('dist/.vite/manifest.json');
         
         if (file_exists($manifestPath)) {
             $this->manifest = json_decode(file_get_contents($manifestPath), true);
@@ -36,11 +36,11 @@ class AssetManager
     private function getAssetUrl(string $entry): ?string
     {
         if ($this->manifest && isset($this->manifest[$entry])) {
-            return $this->app->url('public/dist/' . $this->manifest[$entry]['file']);
+            return $this->app->url('dist/' . $this->manifest[$entry]['file']);
         }
 
         // Fallback for development
-        $fallbackPath = str_replace(['resources/', '.scss'], ['public/dist/', '.css'], $entry);
+        $fallbackPath = str_replace(['resources/', '.scss'], ['dist/', '.css'], $entry);
         return $this->app->url($fallbackPath);
     }
 
