@@ -27,6 +27,13 @@ class MetaFieldsManager
             return;
         }
 
+        // Ensure translation function is available
+        if (!function_exists('__')) {
+            // Fallback labels if translation function is not available
+            $this->initializeMetaFieldsWithoutTranslation();
+            return;
+        }
+
         $this->metaFields = [
             'product_categories' => [
                 'label' => __('Product Categories', 'elementor-wc-meta'),
@@ -110,6 +117,95 @@ class MetaFieldsManager
     }
 
     /**
+     * Initialize meta fields without translation (fallback)
+     */
+    private function initializeMetaFieldsWithoutTranslation(): void
+    {
+        $this->metaFields = [
+            'product_categories' => [
+                'label' => 'Product Categories',
+                'type' => 'taxonomy',
+                'taxonomy' => 'product_cat',
+                'supports_limit' => true,
+                'supports_label' => true,
+            ],
+            'product_tags' => [
+                'label' => 'Product Tags',
+                'type' => 'taxonomy',
+                'taxonomy' => 'product_tag',
+                'supports_limit' => true,
+                'supports_label' => true,
+            ],
+            'product_attributes' => [
+                'label' => 'Product Attributes',
+                'type' => 'attributes',
+                'supports_limit' => true,
+                'supports_label' => true,
+            ],
+            'product_price' => [
+                'label' => 'Product Price',
+                'type' => 'meta',
+                'meta_key' => '_price',
+                'supports_limit' => false,
+                'supports_label' => true,
+            ],
+            'product_regular_price' => [
+                'label' => 'Product Regular Price',
+                'type' => 'meta',
+                'meta_key' => '_regular_price',
+                'supports_limit' => false,
+                'supports_label' => true,
+            ],
+            'product_sale_price' => [
+                'label' => 'Product Sale Price',
+                'type' => 'meta',
+                'meta_key' => '_sale_price',
+                'supports_limit' => false,
+                'supports_label' => true,
+            ],
+            'product_sku' => [
+                'label' => 'Product SKU',
+                'type' => 'meta',
+                'meta_key' => '_sku',
+                'supports_limit' => false,
+                'supports_label' => true,
+            ],
+            'product_stock_status' => [
+                'label' => 'Stock Status',
+                'type' => 'meta',
+                'meta_key' => '_stock_status',
+                'supports_limit' => false,
+                'supports_label' => true,
+            ],
+            'product_weight' => [
+                'label' => 'Product Weight',
+                'type' => 'meta',
+                'meta_key' => '_weight',
+                'supports_limit' => false,
+                'supports_label' => true,
+            ],
+            'product_dimensions' => [
+                'label' => 'Product Dimensions',
+                'type' => 'dimensions',
+                'supports_limit' => false,
+                'supports_label' => true,
+            ],
+            'custom_attribute' => [
+                'label' => 'Custom Attribute',
+                'type' => 'custom_attribute',
+                'supports_limit' => false,
+                'supports_label' => true,
+                'supports_custom_key' => true,
+            ],
+        ];
+
+        // Apply filters if available
+        if (function_exists('apply_filters')) {
+            $this->metaFields = apply_filters('elementor_wc_meta_fields', $this->metaFields);
+        }
+    }
+
+    /**
      * Register meta fields for public access
      */
     public function registerMetaFields(): void
@@ -123,6 +219,11 @@ class MetaFieldsManager
      */
     public function getMetaFields(): array
     {
+        // Force initialization if fields are empty (e.g., in Elementor editor context)
+        if (empty($this->metaFields)) {
+            $this->initializeMetaFields();
+        }
+        
         return $this->metaFields;
     }
 
@@ -131,6 +232,11 @@ class MetaFieldsManager
      */
     public function getMetaField(string $key): ?array
     {
+        // Force initialization if fields are empty (e.g., in Elementor editor context)
+        if (empty($this->metaFields)) {
+            $this->initializeMetaFields();
+        }
+        
         return $this->metaFields[$key] ?? null;
     }
 

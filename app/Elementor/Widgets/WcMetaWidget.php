@@ -84,13 +84,22 @@ class WcMetaWidget extends Widget_Base
         );
 
         // Meta field selection
+        $metaFieldOptions = $this->getMetaFieldOptions();
+        
+        // If no options are available, add a debug option
+        if (empty($metaFieldOptions)) {
+            $metaFieldOptions = [
+                'debug' => __('No meta fields available (check logs)', 'elementor-wc-meta')
+            ];
+        }
+        
         $this->add_control(
             'meta_field',
             [
                 'label' => __('Meta Field', 'elementor-wc-meta'),
                 'type' => Controls_Manager::SELECT,
-                'options' => $this->getMetaFieldOptions(),
-                'default' => 'product_categories',
+                'options' => $metaFieldOptions,
+                'default' => array_key_first($metaFieldOptions) ?: 'product_categories',
             ]
         );
 
@@ -273,6 +282,11 @@ class WcMetaWidget extends Widget_Base
     {
         $metaFields = $this->metaFieldsManager->getMetaFields();
         $options = [];
+
+        // Debug: Log field count for troubleshooting
+        if (function_exists('error_log')) {
+            error_log('ElementorWcMeta: Found ' . count($metaFields) . ' meta fields');
+        }
 
         foreach ($metaFields as $key => $field) {
             $options[$key] = $field['label'];

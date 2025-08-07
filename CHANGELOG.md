@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.1.1] - 2024-01-XX - Editor Fix 🔧
+
+### 🐛 Correction Critique
+- **Liste de méta-champs vide** : Correction du problème où aucun méta-champ n'apparaissait dans l'éditeur Elementor
+- **Initialisation forcée** : Les méta-champs sont maintenant initialisés automatiquement même dans le contexte de l'éditeur
+- **Fallback sans traduction** : Méthode de secours utilisant les labels anglais si les fonctions de traduction ne sont pas disponibles
+- **Debug amélioré** : Ajout de logs pour diagnostiquer les problèmes d'initialisation
+
+### 🔧 Améliorations Techniques
+- **MetaFieldsManager::getMetaFields()** : Initialisation forcée si le tableau est vide
+- **MetaFieldsManager::getMetaField()** : Même logique d'initialisation forcée
+- **initializeMetaFieldsWithoutTranslation()** : Nouvelle méthode de fallback
+- **WcMetaWidget** : Gestion d'erreur avec message informatif si aucun champ trouvé
+
+### 📚 Documentation
+- **TROUBLESHOOTING.md** : Guide de dépannage complet
+- Tests de validation pour confirmer la correction
+
 ## [1.1.0] - 2024-01-XX - Custom Attributes Support 🎯
 
 ### ✨ Nouvelles Fonctionnalités
