@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.1.0] - 2024-01-XX - Custom Attributes Support 🎯
+
+### ✨ Nouvelles Fonctionnalités
+- **Custom Attribute Field** : Nouveau type de champ pour afficher n'importe quel attribut ou méta-champ custom
+- **Attribute Key Control** : Contrôle de saisie pour spécifier la clé d'attribut (ex: `pa_color`, `_custom_field`)
+- **Support Complet des Attributs** : Gestion des attributs produits taxonomiques et non-taxonomiques
+- **Meta Fields Custom** : Support des champs méta personnalisés de plugins tiers
+
+### 🔧 Améliorations Techniques
+- **MetaFieldsManager** : Ajout du type `custom_attribute` et méthodes `getCustomAttributeValue()`, `getTaxonomyAttributeValue()`
+- **WcMetaWidget** : Nouveau contrôle `custom_attribute_key` avec validation conditionnelle
+- **Helper Methods** : `getAvailableProductAttributes()` et `getCommonCustomMetaFields()` pour la référence
+
+### 📚 Documentation
+- **CUSTOM_ATTRIBUTES.md** : Guide complet d'utilisation des attributs custom
+- **README.md** : Mise à jour avec les nouvelles fonctionnalités
+- **Tests** : Ajout de tests unitaires pour les attributs custom
+
+### 🎨 Interface Utilisateur
+- **Contrôle Conditionnel** : Le champ "Attribute Key" s'affiche uniquement pour le type "Custom Attribute"
+- **Placeholder Informatif** : Guide l'utilisateur avec des exemples (pa_color, _custom_field)
+- **Preview Enhanced** : Support du type custom_attribute dans la prévisualisation Elementor
+
 ## [1.0.1] - 2024-01-XX - Translation Fix 🌐
 
 ### 🐛 Corrections

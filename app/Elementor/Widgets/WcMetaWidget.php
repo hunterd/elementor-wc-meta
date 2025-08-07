@@ -150,6 +150,20 @@ class WcMetaWidget extends Widget_Base
             ]
         );
 
+        // Custom attribute key
+        $this->add_control(
+            'custom_attribute_key',
+            [
+                'label' => __('Attribute Key', 'elementor-wc-meta'),
+                'type' => Controls_Manager::TEXT,
+                'placeholder' => __('Enter attribute key (e.g., pa_color, _custom_field)', 'elementor-wc-meta'),
+                'description' => __('Enter the attribute key or meta field name. Use "pa_" prefix for product attributes (e.g., pa_color).', 'elementor-wc-meta'),
+                'condition' => [
+                    'meta_field' => 'custom_attribute',
+                ],
+            ]
+        );
+
         // HTML tag
         $this->add_control(
             'html_tag',
@@ -290,12 +304,14 @@ class WcMetaWidget extends Widget_Base
         $limit = (int) $settings['limit'];
         $separator = $settings['separator'] ?: ', ';
         $htmlTag = $settings['html_tag'] ?: 'div';
+        $customAttributeKey = $settings['custom_attribute_key'] ?? '';
 
         // Prepare options for meta value retrieval
         $options = [
             'show_label' => $showLabel,
             'limit' => $limit,
             'separator' => $separator,
+            'custom_key' => $customAttributeKey,
         ];
 
         // Get meta value
@@ -375,7 +391,8 @@ class WcMetaWidget extends Widget_Base
             'product_sku': 'PROD-123',
             'product_stock_status': 'In Stock',
             'product_weight': '2.5 kg',
-            'product_dimensions': '10 × 20 × 30 cm'
+            'product_dimensions': '10 × 20 × 30 cm',
+            'custom_attribute': 'Custom Value'
         };
         
         var value = sampleValues[metaField] || 'Sample Value';

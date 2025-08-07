@@ -43,4 +43,32 @@ class MetaFieldsManagerTest extends TestCase
         
         $this->assertNull($field);
     }
+
+    public function testCustomAttributeFieldExists(): void
+    {
+        $field = $this->metaFieldsManager->getMetaField('custom_attribute');
+        
+        $this->assertIsArray($field);
+        $this->assertArrayHasKey('label', $field);
+        $this->assertArrayHasKey('type', $field);
+        $this->assertEquals('custom_attribute', $field['type']);
+        $this->assertTrue($field['supports_custom_key']);
+    }
+
+    public function testGetAvailableProductAttributes(): void
+    {
+        $attributes = MetaFieldsManager::getAvailableProductAttributes();
+        
+        $this->assertIsArray($attributes);
+        // Note: This will be empty in test environment since WooCommerce functions are not available
+    }
+
+    public function testGetCommonCustomMetaFields(): void
+    {
+        $metaFields = MetaFieldsManager::getCommonCustomMetaFields();
+        
+        $this->assertIsArray($metaFields);
+        $this->assertArrayHasKey('_custom_field_1', $metaFields);
+        $this->assertArrayHasKey('_product_url', $metaFields);
+    }
 }

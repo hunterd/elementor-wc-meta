@@ -24,6 +24,7 @@ A professional WordPress plugin that adds WooCommerce product meta fields to Ele
 - **Stock Status**: Show in stock/out of stock status
 - **Product Weight**: Display weight with unit
 - **Product Dimensions**: Show dimensions (L × W × H)
+- **Custom Attribute**: Display any custom product attribute or meta field
 
 ## Requirements
 
@@ -46,12 +47,23 @@ A professional WordPress plugin that adds WooCommerce product meta fields to Ele
 
 1. Add the "WC Meta Field" widget to your layout
 2. Select the desired meta field from the dropdown
-3. Configure display options:
+3. For "Custom Attribute", enter the attribute key (e.g., `pa_color`, `_custom_field`)
+4. Configure display options:
    - Toggle label visibility
    - Set custom label text
    - Limit number of items (for taxonomies/attributes)
    - Choose separator for multiple values
    - Select HTML tag for output
+
+### Custom Attributes
+
+The plugin supports displaying custom product attributes and meta fields:
+
+- **Product Attributes**: Use `pa_` prefix (e.g., `pa_color`, `pa_size`)
+- **Custom Meta Fields**: Use the exact meta key (e.g., `_custom_field`, `_product_url`)
+- **Plugin Fields**: Many plugins add custom fields (e.g., `_yoast_wpseo_title`)
+
+See [CUSTOM_ATTRIBUTES.md](CUSTOM_ATTRIBUTES.md) for detailed usage examples.
 
 ### In Loop Templates
 

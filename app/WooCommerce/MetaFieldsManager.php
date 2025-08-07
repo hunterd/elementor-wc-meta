@@ -96,6 +96,13 @@ class MetaFieldsManager
                 'supports_limit' => false,
                 'supports_label' => true,
             ],
+            'custom_attribute' => [
+                'label' => __('Custom Attribute', 'elementor-wc-meta'),
+                'type' => 'custom_attribute',
+                'supports_limit' => false,
+                'supports_label' => true,
+                'supports_custom_key' => true,
+            ],
         ];
 
         // Allow filtering of meta fields
@@ -145,6 +152,7 @@ class MetaFieldsManager
         $showLabel = $options['show_label'] ?? true;
         $limit = $options['limit'] ?? 0;
         $separator = $options['separator'] ?? ', ';
+        $customKey = $options['custom_key'] ?? '';
 
         $value = '';
         $label = $showLabel ? $metaField['label'] . ': ' : '';
@@ -164,6 +172,10 @@ class MetaFieldsManager
             
             case 'dimensions':
                 $value = $this->getDimensionsValue($product);
+                break;
+            
+            case 'custom_attribute':
+                $value = $this->getCustomAttributeValue($product, $customKey);
                 break;
         }
 
@@ -268,5 +280,92 @@ class MetaFieldsManager
 
         $dimensions = array_filter([$length, $width, $height]);
         return implode(' × ', $dimensions) . ' ' . $unit;
+    }
+
+    /**
+     * Get custom attribute value
+     */
+    private function getCustomAttributeValue(\WC_Product $product, string $attributeKey): string
+    {
+        if (empty($attributeKey)) {
+            return '';
+        }
+
+        // Check if it's a product attribute (pa_attribute_name format)
+        if (strpos($attributeKey, 'pa_') === 0) {
+            return $this->getTaxonomyAttributeValue($product, $attributeKey);
+        }
+
+        // Check if it's a regular meta field
+        $metaValue = $product->get_meta($attributeKey);
+        if (!empty($metaValue)) {
+            return (string) $metaValue;
+        }
+
+        // Check if it's a product attribute (non-taxonomy)
+        $attributes = $product->get_attributes();
+        foreach ($attributes as $attribute) {
+            if ($attribute->get_name() === $attributeKey) {
+                if ($attribute->is_taxonomy()) {
+                    return $this->getTaxonomyAttributeValue($product, $attributeKey);
+                } else {
+                    $values = $attribute->get_options();
+                    return is_array($values) ? implode(', ', $values) : (string) $values;
+                }
+            }
+        }
+
+        return '';
+    }
+
+    /**
+     * Get taxonomy attribute value
+     */
+    private function getTaxonomyAttributeValue(\WC_Product $product, string $taxonomy): string
+    {
+        $terms = get_the_terms($product->get_id(), $taxonomy);
+        
+        if (!$terms || is_wp_error($terms)) {
+            return '';
+        }
+
+        $termNames = array_map(function($term) {
+            return $term->name;
+        }, $terms);
+
+        return implode(', ', $termNames);
+    }
+
+    /**
+     * Get available product attributes (for reference)
+     */
+    public static function getAvailableProductAttributes(): array
+    {
+        // Get global product attributes
+        $attributes = [];
+        
+        if (function_exists('wc_get_attribute_taxonomies')) {
+            $attributeTaxonomies = wc_get_attribute_taxonomies();
+            foreach ($attributeTaxonomies as $attribute) {
+                $attributes['pa_' . $attribute->attribute_name] = $attribute->attribute_label;
+            }
+        }
+        
+        return $attributes;
+    }
+
+    /**
+     * Get common custom meta fields (for reference)
+     */
+    public static function getCommonCustomMetaFields(): array
+    {
+        return [
+            '_custom_field_1' => __('Custom Field 1', 'elementor-wc-meta'),
+            '_custom_field_2' => __('Custom Field 2', 'elementor-wc-meta'),
+            '_product_url' => __('Product URL', 'elementor-wc-meta'),
+            '_button_text' => __('Button Text', 'elementor-wc-meta'),
+            '_download_limit' => __('Download Limit', 'elementor-wc-meta'),
+            '_download_expiry' => __('Download Expiry', 'elementor-wc-meta'),
+        ];
     }
 }
